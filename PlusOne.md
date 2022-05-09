@@ -15,11 +15,11 @@ class Solution {
             }
         }
         
-        if(digits[0]! = 0) {
+        if(digits[0] != 0) {
             return digits;
         };
         
-        int[] res = new int[n + 1];
+        int[] res = new int[size + 1];
         res[0] = 1;
         return res; 
     } 
