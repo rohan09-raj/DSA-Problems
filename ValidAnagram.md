@@ -1,0 +1,27 @@
+### Question
+https://leetcode.com/problems/valid-anagram
+
+### Solution
+```JAVA
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length()) return false; 
+        
+        int[] frequency = new int[26];
+        
+        for(int i=0; i<s.length(); i++) {
+            frequency[s.charAt(i) - 'a']++;
+        }
+        
+        for(int i=0; i<t.length(); i++) {
+            if(frequency[t.charAt(i) - 'a'] != 0) {
+                frequency[t.charAt(i) - 'a']--;
+            } else {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
+```
