@@ -66,3 +66,45 @@ class Solution {
     }
 }
 ```
+
+### Question
+https://leetcode.com/problems/binary-tree-level-order-traversal
+
+### Solution
+```JAVA
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+        
+        if(root == null) {
+            return list;
+        }
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        
+        queue.add(root);
+        
+        while(!queue.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            int queueLength = queue.size();
+            
+            for(int i=0; i<queueLength; i++) {
+                TreeNode current = queue.remove();
+                level.add(current.val);
+                
+                if(current.left != null) {
+                    queue.add(current.left);
+                }
+                
+                if(current.right != null) {
+                    queue.add(current.right);
+                }
+            }
+            
+            list.add(level);
+        }
+        
+        return list;
+    }
+}
+```
