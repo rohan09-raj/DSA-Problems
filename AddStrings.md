@@ -17,11 +17,13 @@ class Solution {
                 sum += (num2.charAt(length2--) - '0');
             } else {
                 sum += (num1.charAt(length1--) - '0');
-            }  
+            }
+            // If we add integer number to an string, we get result as string
             result = sum % 10 + result;
             sum /= 10;
         }
         
+        // If after traversing both string fully if there is any carry left in sum, add (prepend) it to the result
         if(sum != 0) {
             result = sum + result;
         }    
