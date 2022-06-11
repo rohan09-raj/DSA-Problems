@@ -1,0 +1,59 @@
+### Question
+https://leetcode.com/problems/subarray-sum-equals-k/
+
+### Solution
+```JAVA
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        HashMap<Integer,Integer> prefixSum = new HashMap<>();
+        
+        prefixSum.put(0,1);
+        int currentSum=0;
+        int count = 0;
+
+        for(int i=0; i<nums.length; i++) {
+            currentSum += nums[i];
+            
+            if(prefixSum.containsKey(currentSum-k)) {
+                count += prefixSum.get(currentSum-k);
+            }
+            
+            prefixSum.put(currentSum, prefixSum.getOrDefault(currentSum, 0) + 1);
+        }
+
+        return count;
+    }
+}
+```
+
+Time Limit Exceeded for Very Large Input Array
+```JAVA
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        int count = 0;
+        int n = nums.length;
+        int[] subArraySum = new int[n*(n+1)/2];
+        int sum = 0;
+        int index = 0;
+        
+        for(int i=0; i<nums.length; i++) {
+            sum = 0;
+            
+            for(int j=i; j<nums.length; j++) {
+                sum += nums[j];
+                subArraySum[index] = sum;
+                index++;
+            }   
+        }
+        
+        for(int num: subArraySum) {
+            if(num == k) {
+                count += 1;
+            }
+        }
+        
+        return count;
+    }
+
+}
+```
