@@ -51,7 +51,7 @@ public class Solution {
             result = result.next;
         }
         
-        return dummy;
+        return result;
     }
 }
 ```
