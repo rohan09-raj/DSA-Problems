@@ -1,0 +1,25 @@
+### Question
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+
+### Solution
+```JAVA
+class Solution {
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+        int min = Integer.MAX_VALUE;
+        
+        for(int i=0; i<prices.length; i++) {
+            if(prices[i] < min) {
+                min = prices[i];
+            }
+            
+            if(prices[i] - min > 0) {
+                profit = profit + prices[i] - min;
+                min = prices[i];
+            }
+        }
+        
+        return profit;
+    }
+}
+```
